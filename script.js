@@ -1,10 +1,15 @@
+// Add event listeners to input fields
+document.getElementById('height').addEventListener('input', calculateBMI);
+document.getElementById('weight').addEventListener('input', calculateBMI);
+document.getElementById('age').addEventListener('input', calculateBMI);
+
 function calculateBMI() {
     const height = parseFloat(document.getElementById('height').value);
     const weight = parseFloat(document.getElementById('weight').value);
     const age = parseInt(document.getElementById('age').value);
   
     if (isNaN(height) || isNaN(weight) || isNaN(age)) {
-      alert('Please enter valid values for height, weight, and age.');
+      document.getElementById('result').innerText = 'Please enter valid values for height, weight, and age.';
       return;
     }
   
@@ -15,10 +20,9 @@ function calculateBMI() {
     document.getElementById('result').innerText = result;
   }
   
-  function getBMICategory(bmi) {
+function getBMICategory(bmi) {
     if (bmi < 18.5) return 'Underweight';
     else if (bmi >= 18.5 && bmi < 24.9) return 'Normal weight';
     else if (bmi >= 25 && bmi < 29.9) return 'Overweight';
     else return 'Obesity';
-  }
-  
+}
